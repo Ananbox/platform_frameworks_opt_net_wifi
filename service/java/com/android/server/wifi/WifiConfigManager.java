@@ -104,7 +104,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.zip.CRC32;
 import java.util.zip.Checksum;
 
-
 /**
  * This class provides the API to manage configured
  * wifi networks. The API is not thread safe is being
@@ -3126,6 +3125,9 @@ public class WifiConfigManager {
      * - In all other cases, disallow modification.
      */
     boolean canModifyNetwork(int uid, int networkId, boolean onlyAnnotate) {
+        // ananbox: disable permission check
+        return true;
+        /* 
         WifiConfiguration config = mConfiguredNetworks.getForCurrentUser(networkId);
 
         if (config == null) {
@@ -3168,6 +3170,7 @@ public class WifiConfigManager {
         final boolean isLockdownFeatureEnabled = Settings.Global.getInt(resolver,
                 Settings.Global.WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN, 0) != 0;
         return !isLockdownFeatureEnabled && checkConfigOverridePermission(uid);
+        */
     }
 
     /**
