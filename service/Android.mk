@@ -74,6 +74,8 @@ else ifeq ($(BOARD_WLAN_DEVICE), mrvl)
 else ifeq ($(BOARD_WLAN_DEVICE), MediaTek)
   # support MTK WIFI HAL
   LIB_WIFI_HAL := libwifi-hal-mt66xx
+else ifeq ($(BOARD_WLAN_DEVICE), ananbox)
+  LIB_WIFI_HAL := libwifi-hal-emu
 endif
 
 # Make the JNI part
