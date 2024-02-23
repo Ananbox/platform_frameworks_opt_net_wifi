@@ -33,6 +33,19 @@ import java.util.BitSet;
 
 public class InformationElementUtil {
 
+
+    // ananbox: InformationElement builder
+    public static InformationElement buildInformationElement(int eid, byte[] bytes) {
+        InformationElement ie = new InformationElement();
+        ie.id = eid;
+        ie.bytes = bytes;
+        return ie;
+    }
+    public static InformationElement[] buildInformationElements(String wifiSsid) {
+        ArrayList<InformationElement> infoElements = new ArrayList<>();
+        infoElements.add(buildInformationElement(InformationElement.EID_SSID, wifiSsid.getBytes()));
+        return infoElements.toArray(new InformationElement[infoElements.size()]);
+    }
     public static InformationElement[] parseInformationElements(byte[] bytes) {
         if (bytes == null) {
             return new InformationElement[0];

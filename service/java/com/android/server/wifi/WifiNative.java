@@ -704,9 +704,13 @@ public class WifiNative {
                                 throw new IllegalArgumentException("No element separator");
                             }
 
+                            // ananbox: generate eid ourselves
+                            /*
                             ScanResult.InformationElement[] infoElements =
                                         InformationElementUtil.parseInformationElements(
                                         Utils.hexToBytes(infoElementsStr.substring(seperator + 1)));
+                                        */
+                            ScanResult.InformationElement[] infoElements = InformationElementUtil.buildInformationElements(wifiSsid.toString());
 
                             NetworkDetail networkDetail = new NetworkDetail(bssid,
                                     infoElements, anqpLines, freq);
